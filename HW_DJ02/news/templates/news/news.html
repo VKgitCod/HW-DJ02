@@ -5,19 +5,21 @@
 {% endblock %}
 
 {% block content %}
-
 <h1>Новостная страница</h1>
-
-{% for new in news %}
-	<div>
-
-		<h3> {{ new.title }} </h3>
-		<h4> {{ new.short_description }} </h4>
-		<p> {{ new.text }} </p>
-		<p> Имя автора: {{ new.name }} </p>
-		<p> Дата и вермя публикации: {{ new.pub_date }} </p>
-
-	</div>
-{% endfor %}
+	{% if news %}
+		{% for new in news %}
+			<div class="card">
+				<div class="card" style="width: 30rem;">
+					<div class="card-body">
+						<h5 class="card-title">{{ new.title }}</h5>
+						<p class="card-text">{{ new.short_description }} </p>
+						<a href="#" class="btn btn-primary">Подробнее</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<h4>Новостей ещё нет.</h4>
+	{% endif %}
 
 {% endblock %}
